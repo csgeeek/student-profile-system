@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h2>Collegehead Login</h2>
+<form method="POST" action="">
+    {% csrf_token %}
+    <label>Username:</label>
+    <input type="text" name="username" placeholder="Enter Username" />
+    <br>
+    <label>Password:</label>
+    <input type="password" name="password" placeholder="Enter Password" />
+    <br>
+    <input type="submit" value="Sign In" />
+</form>
+{% endblock %}

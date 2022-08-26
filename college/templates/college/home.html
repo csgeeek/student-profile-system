@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% block content %}
+<div>
+    <h2>College head app</h2>
+    <a href="{% url 'add-student' %}">Add a student</a>
+    <h3>Students List</h3>
+    <div>
+        {% for student in students %}
+        <div>
+            <a href="{% url 'update-student' student.id %}">Edit</a>
+            <p>{{ student.registration_no }}</p>
+            <p>{{ student.name }}</p>
+            <p>{{ student.other_details }}</p>
+            <hr>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}

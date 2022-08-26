@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<form method="POST" action="">
+    {% csrf_token %}
+
+    <label>Username:</label>
+    <input type="text" name="username" placeholder="Enter Username" />
+    <br>
+    <label>Password:</label>
+    <input type="password" name="password" placeholder="Enter Password" />
+    <br>
+    <input type="submit" value="Login" />
+</form>
+
+<p>havent signed up yet?</p>
+<a href="{% url 'register-govt-official' %}">Sign up</a>
+</form>
+{% endblock %}
