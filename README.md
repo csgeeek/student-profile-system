@@ -2,8 +2,7 @@
 
 This project is built in Django and uses MySQL as the database.
 This webapp provides a central platform to monitor and track Colleges and their respective student profiles. It uniquely identifies each student and provides a platform to track their performance.
-It can handle over 4.5 Lakh Colleges.
-Used an algorithm which allows to uniquely identify any student.
+Used an algorithm to generate a unique for each college and can handle over 4.5 Lakh Colleges.
 Implemented database indexing which provides a significant speedup in accessing records.
 
 ## Getting started
