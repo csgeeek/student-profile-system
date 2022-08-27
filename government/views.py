@@ -10,7 +10,7 @@ from customuser.models import CustomUser, Student, College
 
 # ALGORITHM FOR ID GENERATION
 # 1. Get the last college id from the database
-# 2. Increment the last college id by 1
+# 2. Generate the next word in lexicographical order
 # 3. Return the new college id
 # 4. Save the new college id in the database
 
@@ -50,8 +50,18 @@ def generateId():
 @login_required
 @govt_official_required  # <-- here!
 def home(request):
-    students = Student.objects.all()
-    return render(request, 'government/home.html', {'students': students})
+    colleges = College.objects.all()
+    return render(request, 'government/home.html', {'colleges': colleges})
+
+
+@login_required
+@govt_official_required  # <-- here!
+def viewStudentsListByCollege(request, college_id):
+    college = College.objects.get(college_id=college_id)
+    students = Student.objects.filter(college_id=college.id)
+    context = {'students': students, 'college_id': college_id}
+    return render(request, 'government/view-students-list.html', context=context)
+
 
 
 def loginPage(request):

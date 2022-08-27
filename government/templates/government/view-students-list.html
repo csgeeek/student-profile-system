@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>Students of {{college_id}}</h1>
+<div>
+    {% for student in students %}
+    <h3>{{student.college_id}}</h3>
+    <h4>{{student.registration_no}}</h4>
+    <h4>{{student.student_college_name}}</h4>
+    <p>{{student.name}}</p>
+    <p>{{student.other_details}}</p>
+    <hr>
+    {% endfor %}
+</div>
+{% endblock %}
