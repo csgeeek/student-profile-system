@@ -3,6 +3,9 @@
 {% block content %}
 <a href="{% url 'register-college-and-head' %}">Register College</a>
 <h1>Welcome to govt official page</h1>
+<form action="">
+    <input type="text" name="q" placeholder="Search">
+</form>
 <div>
     {% for college in colleges %}
     <a href="{% url 'view-students' college.college_id %}">View Students</a>

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 from .decorators import govt_official_required
 from .forms import UserRegistrationForm, CollegeRegistrationForm
@@ -50,7 +51,13 @@ def generateId():
 @login_required
 @govt_official_required  # <-- here!
 def home(request):
-    colleges = College.objects.all()
+    q = request.GET.get('q')
+    if q:
+        colleges = College.objects.filter(
+            Q(college_id__icontains=q) | Q(college_name__icontains=q)
+        )
+    else:
+        colleges = College.objects.all()
     return render(request, 'government/home.html', {'colleges': colleges})
 
 
