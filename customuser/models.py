@@ -48,7 +48,9 @@ class College(models.Model):
 class Student(models.Model):
     class Meta:
         unique_together = (("college_id", "registration_no"),)
-
+        indexes = [
+            models.Index(fields=['college_id',])
+        ]
     college_id = models.ForeignKey(College, on_delete=models.CASCADE, related_name="student_college_id")
     registration_no = models.CharField(max_length=20)
     name = models.CharField(max_length=200)
