@@ -3,10 +3,11 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Q
 
 from .forms import StudentForm
 from .decorators import college_head_required
-from customuser.models import College, CustomUser, Student
+from customuser.models import CustomUser
 
 # Create your views here.
 
@@ -15,7 +16,14 @@ from customuser.models import College, CustomUser, Student
 @college_head_required  # <-- here!
 def home(request):
     collegehead = CustomUser.objects.get(username=request.user.username)
-    students = collegehead.college_head.student_college_id.all()
+    q = request.GET.get('q')
+    if q:
+        students = collegehead.college_head.student_college_id.filter(
+            Q(registration_no__icontains=q) | Q(name__icontains=q)
+        )
+    else:
+        students = collegehead.college_head.student_college_id.all()
+        # students = Student.objects.filter(college_id=college.id)
     context = {'students': students}
     return render(request, 'college/home.html', context=context)
 

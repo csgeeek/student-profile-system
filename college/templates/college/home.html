@@ -4,6 +4,9 @@
     <h2>College head app</h2>
     <a href="{% url 'add-student' %}">Add a student</a>
     <h3>Students List</h3>
+    <form action="">
+        <input type="text" name="q" placeholder="Search">
+    </form>
     <div>
         {% for student in students %}
         <div>
