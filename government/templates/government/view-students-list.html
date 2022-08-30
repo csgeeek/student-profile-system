@@ -2,6 +2,9 @@
 
 {% block content %}
 <h1>Students of {{college_id}}</h1>
+<form action="">
+    <input type="text" name="q" placeholder="Search">
+</form>
 <div>
     {% for student in students %}
     <h3>{{student.college_id}}</h3>

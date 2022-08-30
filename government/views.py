@@ -64,8 +64,16 @@ def home(request):
 @login_required
 @govt_official_required  # <-- here!
 def viewStudentsListByCollege(request, college_id):
+    q = request.GET.get('q')
     college = College.objects.get(college_id=college_id)
-    students = Student.objects.filter(college_id=college.id)
+    if q:
+        students = Student.objects.filter(
+            Q(college_id=college.id) & (
+            Q(registration_no__icontains=q) | 
+            Q(name__icontains=q)
+        ))
+    else:
+        students = Student.objects.filter(college_id=college.id)
     context = {'students': students, 'college_id': college_id}
     return render(request, 'government/view-students-list.html', context=context)
 
