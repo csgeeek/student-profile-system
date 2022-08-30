@@ -2,9 +2,51 @@
 
 {% block content %}
 <h2>Register Government Official</h2>
-<form method="POST" action="">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Submit">
-</form>
+<div class="container">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <p>
+            <label for="id_username" class="form-label">Username:</label>
+            <input type="text" name="username" class="form-control" maxlength="255" autofocus required id="id_username">
+        </p>
+
+
+        <p>
+            <label for="id_first_name" class="form-label">First name:</label>
+            <input type="text" name="first_name" class="form-control" maxlength="255" id="id_first_name">
+        </p>
+
+
+        <p>
+            <label for="id_last_name" class="form-label">Last name:</label>
+            <input type="text" name="last_name" class="form-control" maxlength="255" id="id_last_name">
+        </p>
+
+
+        <p>
+            <label for="id_password1" class="form-label">Password:</label>
+            <input type="password" name="password1" class="form-control" autocomplete="new-password" required
+                id="id_password1">
+
+            <span class="helptext">
+                <ul>
+                    <li>Your password can't be too similar to your other personal information.</li>
+                    <li>Your password must contain at least 8 characters.</li>
+                    <li>Your password can't be a commonly used password.</li>
+                    <li>Your password can't be entirely numeric.</li>
+                </ul>
+            </span>
+        </p>
+
+
+        <p>
+            <label for="id_password2" class="form-label">Password confirmation:</label>
+            <input type="password" name="password2" class="form-control" autocomplete="new-password" required
+                id="id_password2">
+
+            <span class="helptext">Enter the same password as before, for verification.</span>
+        </p>
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+</div>
 {% endblock %}

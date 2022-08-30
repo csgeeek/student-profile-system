@@ -1,19 +1,20 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<form method="POST" action="">
-    {% csrf_token %}
+<div class="container">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleInputText1" class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" id="exampleInputText1" aria-describedby="textHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
 
-    <label>Username:</label>
-    <input type="text" name="username" placeholder="Enter Username" />
-    <br>
-    <label>Password:</label>
-    <input type="password" name="password" placeholder="Enter Password" />
-    <br>
-    <input type="submit" value="Login" />
-</form>
-
-<p>havent signed up yet?</p>
-<a href="{% url 'register-govt-official' %}">Sign up</a>
-</form>
+    <p>Didn't sign up yet?<a href="{% url 'register-govt-official' %}">Sign up</a></p>
+</div>
 {% endblock %}
