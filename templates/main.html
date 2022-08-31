@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +21,35 @@
     </ul>
     {% endif %}
     {% block content %}
+    <section class="bg-dark text-light text-center p-5">
+        <div class="container">
+            <div class="d-sm-flex justify-content-between align-items-center">
+                <img src="{% static '6-ed.jpg' %}" class="img-fluid img-thumbnail w-50" alt="">
+                <div>
+                    <h1>Login as <span class="text-warning">College Head</span></h1>
+                    <p class="lead mx-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro consequatur
+                        consequuntur odio quo, deserunt alias aperiam commodi explicabo nam deleniti repellendus quasi
+                        asperiores veritatis eum et cupiditate perferendis libero! Recusandae!</p>
+                    <a href="{% url 'college-head-login' %}" class="btn btn-primary btn-lg">Login</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="bg-darks p-5 text-center">
+        <div class="container">
+            <div class="d-sm-flex justify-content-between align-items-center">
+                <div>
+                    <h1>Login as <span class="text-warning">Government Official</span></h1>
+                    <p class="lead mx-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro consequatur
+                        consequuntur odio quo, deserunt alias aperiam commodi explicabo nam deleniti repellendus quasi
+                        asperiores veritatis eum et cupiditate perferendis libero! Recusandae!</p>
+                    <a href="{% url 'govt-official-login' %}" class="btn btn-primary btn-lg">Login</a>
+                </div>
+                <img src="{% static '5.jpg' %}" class="img-fluid img-thumbnail w-50" alt="">
+            </div>
+        </div>
+    </section>
 
     {% endblock %}
 

@@ -1,9 +1,38 @@
-<a href="/">LOGO</a>
-{% if request.user.is_authenticated %}
-<h2>Hello {{ request.user }}</h2>
-<a href="{% url 'govt-official-logout' %}">Logout</a>
-{% else %}
-<a href="{% url 'govt-official-login' %}">Government Official Login</a>
-<a href="{% url 'college-head-login' %}">College head Login</a>
-<a href="{% url 'register-govt-official' %}">Register</a>
-{% endif %}
+{% load static %}
+<style>
+    .logo {
+        width: 75px;
+        height: auto;
+    }
+</style>
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <div class="container">
+        <a href="/" class="navbar-brand">LOGO</a>
+        <button class="navbar-toggler" type="button" data-bs-target="#navmenu" data-bs-toggle="collapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        {% if request.user.is_authenticated %}
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="{% url 'govt-official-logout' %}" class="nav-link">Logout</a>
+                </li>
+            </ul>
+        </div>
+        {% else %}
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="{% url 'govt-official-login' %}" class="nav-link">Government Official Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'college-head-login' %}" class="nav-link">College Head Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'register-govt-official' %}" class="nav-link">Register</a>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</nav>

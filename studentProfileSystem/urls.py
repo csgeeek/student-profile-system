@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import render, redirect
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 def mainPage(request):
     return render(request, 'main.html')
@@ -27,4 +28,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('govt/', include('government.urls'), name='govt'),
     path('college/', include('college.urls')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
