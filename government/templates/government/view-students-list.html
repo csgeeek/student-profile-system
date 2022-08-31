@@ -1,18 +1,26 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<h1>Students of {{college_id}}</h1>
-<form action="">
-    <input type="text" name="q" placeholder="Search">
-</form>
-<div>
-    {% for student in students %}
-    <h3>{{student.college_id}}</h3>
-    <h4>{{student.registration_no}}</h4>
-    <h4>{{student.student_college_name}}</h4>
-    <p>{{student.name}}</p>
-    <p>{{student.other_details}}</p>
-    <hr>
-    {% endfor %}
-</div>
+<section class="bg-light mt-3">
+    <div class="container">
+        <h1>{{college_name}} : {{college_id}}</h1>
+        <form action="" class="my-3">
+            <input type="text" name="q" placeholder="Search student...">
+            <input type="submit" class="btn btn-primary">
+        </form>
+        <div class="bg-dark mb-3 p-5 text-light ">
+            {% if students %}
+            {% for student in students %}
+            <h4>{{student.registration_no}}</h4>
+
+            <p>Name:- {{student.name}}</p>
+            <p>Other details:- {{student.other_details}}</p>
+            <hr>
+            {% endfor %}
+            {% else %}
+            <h3>No students found</h3>
+            {% endif %}
+        </div>
+    </div>
+</section>
 {% endblock %}

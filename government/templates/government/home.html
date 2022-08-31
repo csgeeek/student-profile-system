@@ -1,18 +1,29 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<a href="{% url 'register-college-and-head' %}">Register College</a>
-<h1>Welcome to govt official page</h1>
-<form action="">
-    <input type="text" name="q" placeholder="Search">
-</form>
-<div>
-    {% for college in colleges %}
-    <a href="{% url 'view-students' college.college_id %}">View Students</a>
-    <h3>{{college.college_id}}</h3>
-    <h4>{{college.college_name}}</h4>
-    <p>{{college.college_head.username}}</p>
-    <hr>
-    {% endfor %}
-</div>
+<section class="bg-light mt-3">
+    <div class="container">
+        <h1>Welcome <span class="text-warning">{{request.user.username}}</span></h1>
+        <h3>Register a new college <a href="{% url 'register-college-and-head' %}">here</a></h3>
+        <form action="" class="my-3">
+            <input type="text" name="q" placeholder="Search college...">
+            <input type="submit" class="btn btn-primary">
+        </form>
+        <h3>List of colleges:</h3>
+        <div class="bg-dark mb-3 p-5 text-light ">
+            {% for college in colleges %}
+            <div class="d-sm-flex justify-content-between">
+                <h3>{{college.college_id}}</h3>
+                <a href="{% url 'view-students' college.college_id %}">View Students</a>
+            </div>
+            <div class="d-sm-flex justify-content-between">
+                <h4>{{college.college_name}}</h4>
+                <p>{{college.college_head.username}}</p>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
 {% endblock %}

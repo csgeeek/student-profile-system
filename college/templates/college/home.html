@@ -1,21 +1,32 @@
 {% extends 'main.html' %}
 {% block content %}
-<div>
-    <h2>College head app</h2>
-    <a href="{% url 'add-student' %}">Add a student</a>
-    <h3>Students List</h3>
-    <form action="">
-        <input type="text" name="q" placeholder="Search">
+<div class="container">
+    <div class="d-sm-flex justify-content-between my-3">
+        <h2>Welcome {{request.user.username}}</h2>
+        <h2><a href="{% url 'add-student' %}">Add a student</a></h2>
+    </div>
+    <form action="" class="mb-3">
+        <input type="text" name="q" placeholder="Search students...">
+        <input type="submit" class="btn btn-primary btn-sm">
     </form>
-    <div>
-        {% for student in students %}
+    <div class="bg-dark text-light p-5">
+        {% if students %}
+        <h3>Students List:</h3>
         <div>
-            <a href="{% url 'update-student' student.id %}">Edit</a>
-            <p>{{ student.registration_no }}</p>
-            <p>{{ student.name }}</p>
-            <p>{{ student.other_details }}</p>
-            <hr>
+            {% for student in students %}
+            <div>
+                <div class="d-sm-flex justify-content-between">
+                    <h4>{{ student.registration_no }}</h4>
+                    <h4><a href="{% url 'update-student' student.id %}">Edit</a></h4>
+                </div>
+                <p>Name:- {{ student.name }}</p>
+                <p>Other Details:- {{ student.other_details }}</p>
+                <hr>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+        {% else %}
+        <h3>No students found</h3>
+        {% endif %}
     </div>
     {% endblock %}

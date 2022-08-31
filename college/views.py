@@ -83,3 +83,21 @@ def update_student(request, pk):
             form.save()
             return redirect('college-head-home')
     return render(request, 'college/student-form.html', {'form': form})
+
+
+        # <p>
+        #     <label for="id_registration_no" class="form-label">Registration no:</label>
+        #     <input type="text" name="registration_no">
+        # </p>
+
+
+        # <p>
+        #     <label for="id_name" class="form-label">Name:</label>
+        #     <input type="text" class="form-control" name="name" maxlength="200" required id="id_name">
+        # </p>
+
+
+        # <p>
+        #     <label for="id_other_details" class="form-label">Other details:</label>
+        #     <input type="text" class="form-control" name="other_details" maxlength="200" required id="id_other_details">
+        # </p>

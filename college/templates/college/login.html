@@ -1,9 +1,9 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<h2>Collegehead Login</h2>
-<div class="container">
-    <form method="POST" action="">
+<div class="container p-5">
+    <form method="POST" action="" class="mx-auto w-50">
+        <h2>College head Login</h2>
         {% csrf_token %}
         <label class="form-label">Username:</label>
         <input type="text" class="form-control" name="username" placeholder="Enter Username" />

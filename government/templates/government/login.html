@@ -1,8 +1,10 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<div class="container">
-    <form method="POST" action="">
+
+<div class="container p-5">
+    <form method="POST" action="" class="mx-auto w-50">
+        <h2>Government Official Login</h2>
         {% csrf_token %}
         <div class="mb-3">
             <label for="exampleInputText1" class="form-label">Username</label>
@@ -12,9 +14,9 @@
             <label for="exampleInputPassword1" class="form-label">Password</label>
             <input type="password" name="password" class="form-control" id="exampleInputPassword1">
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary mb-3">Login</button>
+        <p>Didn't sign up yet?<a href="{% url 'register-govt-official' %}">Sign up</a></p>
     </form>
 
-    <p>Didn't sign up yet?<a href="{% url 'register-govt-official' %}">Sign up</a></p>
 </div>
 {% endblock %}

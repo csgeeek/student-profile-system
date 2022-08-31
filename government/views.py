@@ -74,7 +74,7 @@ def viewStudentsListByCollege(request, college_id):
         ))
     else:
         students = Student.objects.filter(college_id=college.id)
-    context = {'students': students, 'college_id': college_id}
+    context = {'students': students, 'college_id': college_id, 'college_name': college.college_name}
     return render(request, 'government/view-students-list.html', context=context)
 
 
