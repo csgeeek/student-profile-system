@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="my-4">Delete student <span class="text-warning">{{student.registration_no}}</span></h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Yes">
+        <a href="{% url 'college-head-home' %}" class="btn btn-secondary">No</a>
+    </form>
+</div>
+{% endblock %}

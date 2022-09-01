@@ -84,7 +84,15 @@ def update_student(request, pk):
             return redirect('college-head-home')
     return render(request, 'college/student-form.html', {'form': form})
 
-
+@login_required
+@college_head_required
+def delete_student(request, pk):
+    user = CustomUser.objects.get(username=request.user.username)
+    student = user.college_head.student_college_id.get(id=pk)
+    if request.method == 'POST':
+        student.delete()
+        return redirect('college-head-home')
+    return render(request, 'college/student-confirm-delete.html', {'student': student})
         # <p>
         #     <label for="id_registration_no" class="form-label">Registration no:</label>
         #     <input type="text" name="registration_no">
