@@ -37,6 +37,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 
 class College(models.Model):
+    class Meta:
+        indexes = [
+            models.Index(fields=['college_id',]),
+        ]
     college_id = models.CharField(max_length=4, unique=True)
     college_name = models.CharField(max_length=255, unique=True)
     college_head = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name="college_head")
