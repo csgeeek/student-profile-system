@@ -12,3 +12,5 @@ Implemented database indexing which provides a significant speedup in accessing 
 3. Setup the database
 4. Run the migrations
 5. Run the server
+
+Check out the working demo [here](https://youtu.be/3CUAQI2OiZQ).
